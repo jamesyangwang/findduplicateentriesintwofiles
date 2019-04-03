@@ -20,12 +20,8 @@ public class FileUtil {
 
 		Set<String> res = new HashSet<>();
 		
-//		try (RandomAccessFile file = new RandomAccessFile(fileName, "r")) {
-//			for (String line; (line = file.readLine()) != null;) res.add(line);
-//		}
-		
 		try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-	        stream.forEach(line -> res.add(line));
+	        stream.forEach(line -> res.add(line.trim().toLowerCase()));
 		}
 
 		log.info("{} records loaded from {}", res.size(), fileName);
