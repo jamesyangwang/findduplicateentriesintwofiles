@@ -29,6 +29,7 @@ public class FileUtil {
 		}
 
 		log.info("{} records loaded from {}", res.size(), fileName);
+
 		return res;
 	}
 
@@ -37,10 +38,7 @@ public class FileUtil {
 		log.info("{} duplicate entries found", set.size());
 
 		try (RandomAccessFile file = new RandomAccessFile(fileName, "rw")) {
-			for (String str : set) {
-				log.info(str);
-				file.writeChars(str + "\n");
-			}
+			for (String str : set) file.writeChars(str + "\n");
 		}
 
 		log.info("Saved duplicate entries into {}", fileName);

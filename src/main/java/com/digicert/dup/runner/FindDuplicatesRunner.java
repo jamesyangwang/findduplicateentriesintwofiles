@@ -22,15 +22,11 @@ public class FindDuplicatesRunner implements CommandLineRunner {
 
 		log.info("Starting the application...");
 		
-		if (args.length != 3) {
-			log.warn("Need input files to start with.");
-			return;
-		}
-
 		Set<String> set1 = fileUtil.buildSetFromFile(args[1]);
 		Set<String> set2 = fileUtil.buildSetFromFile(args[2]);
 		
 		set1.retainAll(set2);
+		
 		fileUtil.writeSetToFile(set1, "duplicates.txt");
 		
 		log.info("Exiting application...");
